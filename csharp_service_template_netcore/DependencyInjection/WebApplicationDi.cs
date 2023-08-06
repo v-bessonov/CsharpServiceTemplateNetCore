@@ -1,4 +1,5 @@
 ﻿using CsharpServiceTemplateNetCore.Middleware;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Prometheus;
@@ -15,6 +16,7 @@ public static class WebApplicationDi
     {
         if (app.Environment.IsDevelopment())
         {
+            
             app.UseSwagger();
             app.UseSwaggerUI(options =>
             {
@@ -60,6 +62,36 @@ public static class WebApplicationDi
     )
     {
         app.UseMiddleware<DateTimeMiddleware>();
+
+        return app;
+    }
+    
+    public static WebApplication SetExceptionHandler
+    (
+        this WebApplication app
+    )
+    {
+        app.UseExceptionHandler(exceptionHandlerApp =>  
+        {  
+            exceptionHandlerApp.Run(async context =>  
+            {  
+                context.Response.StatusCode = StatusCodes.Status500InternalServerError;  
+  
+                var exceptionHandlerPathFeature =  
+                    context.Features.Get<IExceptionHandlerPathFeature>();  
+  
+                if (exceptionHandlerPathFeature?.Error is InvalidOperationException)  
+                {  
+                    context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                    await context.Response.WriteAsync(exceptionHandlerPathFeature?.Error?.Message 
+                                                      ??  "An exception was thrown."); 
+                }
+                else
+                {
+                    await context.Response.WriteAsync("An exception was thrown."); 
+                }
+            });  
+        }); 
 
         return app;
     }

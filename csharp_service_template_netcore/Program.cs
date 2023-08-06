@@ -11,6 +11,9 @@ var app = builder.Build()
     .SetMiddleware()
     .SetMetrics()
     .SetHealthCheck()
-    .MapDateTimeApi();
+    .SetExceptionHandler()
+    .MapDateTimeApi()
+    .MapBizErrorApi();
+
 
 app.Run();
