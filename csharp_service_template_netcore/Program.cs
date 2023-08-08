@@ -1,19 +1,20 @@
 using CsharpServiceTemplateNetCore.Api;
 using CsharpServiceTemplateNetCore.DependencyInjection;
+using CsharpServiceTemplateNetCore.DependencyInjection.Swagger;
 
 var builder = WebApplication.CreateBuilder(args)
     .SetKestrel()
-    .SetServices();
-
+    .SetServices()
+    .SetAddApiVersioning()
+    .AddSwaggerServices();
 
 var app = builder.Build()
-    .SetDevelopmentEnvironment()
     .SetMiddleware()
     .SetMetrics()
     .SetHealthCheck()
     .SetExceptionHandler()
     .MapDateTimeApi()
-    .MapBizErrorApi();
-
+    .MapBizErrorApi()
+    .SetDevelopmentEnvironment();
 
 app.Run();

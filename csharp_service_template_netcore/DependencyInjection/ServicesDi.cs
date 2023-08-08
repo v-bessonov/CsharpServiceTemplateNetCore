@@ -4,7 +4,7 @@ using CsharpServiceTemplateNetCore.Workers;
 
 namespace CsharpServiceTemplateNetCore.DependencyInjection;
 
-public static class ServiceCollectionDi
+public static class ServicesDi
 {
     
     public static IServiceCollection AddApplicationServices
@@ -26,6 +26,19 @@ public static class ServiceCollectionDi
         services.AddHostedService<ScheduleHeartBeat>();
 
         return services;
+    }
+    
+    public static WebApplicationBuilder SetServices
+    (
+        this WebApplicationBuilder builder
+    )
+    {
+        builder.Services.AddHostedServices()
+            .AddApplicationServices()
+            .AddEndpointsApiExplorer()
+            .AddHealthChecks();
+
+        return builder;
     }
     
 }
