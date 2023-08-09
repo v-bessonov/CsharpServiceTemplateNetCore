@@ -1,4 +1,6 @@
-using CsharpServiceTemplateNetCore.Api;
+using CsharpServiceTemplateNetCore.Api.V1;
+using CsharpServiceTemplateNetCore.Api.V2;
+using CsharpServiceTemplateNetCore.Api.VersionNeutral;
 using CsharpServiceTemplateNetCore.DependencyInjection;
 using CsharpServiceTemplateNetCore.DependencyInjection.Swagger;
 
@@ -14,7 +16,9 @@ var app = builder.Build()
     .SetHealthCheck()
     .SetExceptionHandler()
     .MapDateTimeApi()
-    .MapBizErrorApi()
+    .MapBizErrorApiV1()
+    .MapBizErrorApiV2()
+    .MapWeatherForecastApiV1()
     .SetDevelopmentEnvironment();
 
 app.Run();

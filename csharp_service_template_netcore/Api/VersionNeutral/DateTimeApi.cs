@@ -1,7 +1,7 @@
 ﻿using CsharpServiceTemplateNetCore.DependencyInjection.Swagger;
 using CsharpServiceTemplateNetCore.Interfaces;
 
-namespace CsharpServiceTemplateNetCore.Api;
+namespace CsharpServiceTemplateNetCore.Api.VersionNeutral;
 
 public static class DateTimeApi
 {
