@@ -36,6 +36,7 @@ public static class WeatherForecastApi
             })
             .WithApiVersionSet(app.GetApiVersionSet())
             .HasApiVersion(1.0)
+            .AllowAnonymous()
             .Produces<IEnumerable<WeatherForecast>>()
             .Produces<Error>(400)
             .Produces<Error>(500);
@@ -57,6 +58,7 @@ public static class WeatherForecastApi
             .Accepts<WeatherForecast>("application/json")
             .WithApiVersionSet(app.GetApiVersionSet())
             .HasApiVersion(1.0)
+            .AllowAnonymous()
             .Produces<bool>()
             .Produces<Error>(400)
             .Produces<Error>(500);
@@ -77,6 +79,7 @@ public static class WeatherForecastApi
             .Accepts<WeatherForecast>("application/json")
             .WithApiVersionSet(app.GetApiVersionSet())
             .HasApiVersion(1.0)
+            .AllowAnonymous()
             .Produces<bool>()
             .Produces<Error>(400)
             .Produces<Error>(500);
@@ -93,6 +96,7 @@ public static class WeatherForecastApi
             })
             .WithApiVersionSet(app.GetApiVersionSet())
             .HasApiVersion(1.0)
+            .AllowAnonymous()
             .Produces<bool>()
             .Produces<Error>(400)
             .Produces<Error>(500);

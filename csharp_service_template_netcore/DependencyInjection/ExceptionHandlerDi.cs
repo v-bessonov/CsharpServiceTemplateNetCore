@@ -1,4 +1,5 @@
-﻿using CsharpServiceTemplateNetCore.Models;
+﻿using System.Web.Http;
+using CsharpServiceTemplateNetCore.Models;
 using Microsoft.AspNetCore.Diagnostics;
 using Newtonsoft.Json;
 
@@ -30,15 +31,15 @@ public static class ExceptionHandlerDi
                 };
                 
 
-                if (httpError is UnauthorizedAccessException)
+                if (httpError is HttpResponseException)
                 {
                     context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                    error.Code = 1000;
+                    error.Code = 401;
                 }
                 else if (httpError is InvalidOperationException)  
                 {  
                     context.Response.StatusCode = StatusCodes.Status400BadRequest;
-                    error.Code = 200;
+                    error.Code = 400;
                 }
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(error)); 
             });  

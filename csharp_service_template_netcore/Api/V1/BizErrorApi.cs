@@ -25,6 +25,7 @@ public static class BizErrorApi
             .WithApiVersionSet(app.GetApiVersionSet())
             .HasApiVersion(1.0)
             .HasApiVersion(2.0)
+            .AllowAnonymous()
             .Produces<DateTime>()
             .Produces<Error>(400)
             .Produces<Error>(500);
