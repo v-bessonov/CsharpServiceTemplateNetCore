@@ -47,6 +47,8 @@ public static class AuthApi
                     var token = tokenHandler.CreateToken(tokenDescriptor);
                     var jwtToken = tokenHandler.WriteToken(token);
                     
+                    // in case of distributed systems put token to the redis cache
+                    
                     return new JwtToken
                     {
                         Token = jwtToken,

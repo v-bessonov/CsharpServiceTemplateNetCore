@@ -1,0 +1,24 @@
+### 200 OK
+GET http://localhost:9001/now
+Content-Type: application/json
+
+### 401 Not Authorized
+GET http://localhost:9001/tomorrow
+Content-Type: application/json
+
+
+### Authorization by token, part 1. Retrieve and save token.
+POST http://localhost:9001/token
+Content-Type: application/json
+
+{
+  "userName": "vlad",
+  "password": "bessonov"
+}
+
+> {% client.global.set("auth_token", response.body.token); %}
+
+### 200 OK
+GET http://localhost:9001/tomorrow
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json

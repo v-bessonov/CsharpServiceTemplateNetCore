@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using CsharpServiceTemplateNetCore.Interfaces;
+using Microsoft.AspNetCore.Authentication;
 
 namespace CsharpServiceTemplateNetCore.Middleware;
 
@@ -19,6 +20,11 @@ public class DateTimeMiddleware
             context.Response.Headers.Add("X-Time", 
                 dateTimeService.Now().ToString(CultureInfo.InvariantCulture));
         }
+        
+        var token = await context.GetTokenAsync("access_token");
+        // in case of distributed systems try to get token from redis cache
+        // and if it not there throw unauthorized exception
+        
         await _next.Invoke(context);
     }
 }
