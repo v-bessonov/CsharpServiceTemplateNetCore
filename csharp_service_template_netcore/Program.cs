@@ -24,6 +24,7 @@ var app = builder.Build()
     .MapWeatherForecastApiV1()
     .SetDevelopmentEnvironment()
     .SetJwtAuthentication()
-    .SetCors();
+    .SetCors()
+    .UseHttps();
 
 app.Run();
