@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp_service_template_net
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{78A23857-CDBE-49F2-BC45-68E7B22EF4E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{412D7C48-9220-4A26-81DB-EDA24A572B66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,5 +16,9 @@ Global
 		{964FC36C-CF51-46DC-9DEE-DCEF6772EDE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{964FC36C-CF51-46DC-9DEE-DCEF6772EDE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{964FC36C-CF51-46DC-9DEE-DCEF6772EDE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{412D7C48-9220-4A26-81DB-EDA24A572B66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{412D7C48-9220-4A26-81DB-EDA24A572B66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{412D7C48-9220-4A26-81DB-EDA24A572B66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{412D7C48-9220-4A26-81DB-EDA24A572B66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
